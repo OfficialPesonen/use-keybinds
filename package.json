@@ -1,0 +1,17 @@
+{
+  "name": "use-keybinds",
+  "description": "Lightweight keybind library for React",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "use-keybinds",
+    "playground"
+  ],
+  "scripts": {
+    "use-keybinds": "yarn workspace use-keybinds",
+    "playground": "yarn workspace playground"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
