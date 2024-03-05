@@ -2,10 +2,10 @@ export interface Keybind {
   displayName?: string;
   description?: string;
   isSequential?: boolean;
-  combination: KeybindCombination;
+  keybind: KeybindCombination;
 }
 
-export type Keybinds<Key extends string> = Record<Key, Keybind>;
+export type Keybinds<Slug extends string> = Record<Slug, Keybind>;
 
 export type KeyboardEventKeycode =
   | "Backspace"

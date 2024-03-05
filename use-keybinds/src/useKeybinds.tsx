@@ -4,9 +4,9 @@ import { KeybindsContext } from "./KeybindsProvider";
 import type { KeyboardEventKeycode } from "./types";
 import { createKeybindCombinationString } from "./utils";
 
-type KeybindCallbacks<Key extends string> = Partial<Record<Key, (event: KeyboardEvent) => any>>;
+type KeybindCallbacks<Slug extends string> = Partial<Record<Slug, (event: KeyboardEvent) => any>>;
 
-const useKeybinds = <Key extends string>(callbacks: KeybindCallbacks<Key> = {}) => {
+const useKeybinds = <Slug extends string>(callbacks: KeybindCallbacks<Slug> = {}) => {
   const focusedElement = useFocusedElement();
   const { combinationsToKeybindKey } = useContext(KeybindsContext);
 
@@ -45,12 +45,12 @@ const useKeybinds = <Key extends string>(callbacks: KeybindCallbacks<Key> = {}) 
         [...recentlyPressedKeyCodes],
         true
       );
-      const keybindKey = combinationsToKeybindKey[combinationString] as Key;
-      const sequentialKeybindKey = combinationsToKeybindKey[sequentialCombinationString] as Key;
+      const keybindSlug = combinationsToKeybindKey[combinationString] as Slug;
+      const sequentialKeybindSlug = combinationsToKeybindKey[sequentialCombinationString] as Slug;
 
-      if (sequentialKeybindKey) resetState();
+      if (sequentialKeybindSlug) resetState();
 
-      const callbackFunction = callbacks[sequentialKeybindKey ?? keybindKey];
+      const callbackFunction = callbacks[sequentialKeybindSlug ?? keybindSlug];
       if (!callbackFunction) return;
 
       recentlyPressedKeyCodes.clear();

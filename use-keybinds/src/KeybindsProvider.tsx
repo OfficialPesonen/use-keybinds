@@ -11,20 +11,20 @@ export const KeybindsContext = createContext<{
   combinationsToKeybindKey: {},
 });
 
-interface KeybindsProviderProps<Key extends string> {
+interface KeybindsProviderProps<Slug extends string> {
   children: ReactNode;
-  keybinds: Keybinds<Key>;
+  keybinds: Keybinds<Slug>;
 }
 
-const KeybindsProvider = <Key extends string>(props: KeybindsProviderProps<Key>) => {
+const KeybindsProvider = <Slug extends string>(props: KeybindsProviderProps<Slug>) => {
   const { children, keybinds = {} } = props;
 
-  const combinationsToKeybindKey = useMemo<Record<string, Key>>(() => {
+  const combinationsToKeybindKey = useMemo<Record<string, Slug>>(() => {
     return Object.entries(keybinds).reduce((result, entry) => {
       const key = entry[0] as string;
       const keybind: Keybind = entry[1] as Keybind;
       const combinationString = createKeybindCombinationString(
-        keybind.combination,
+        keybind.keybind,
         keybind.isSequential
       );
       return { ...result, [combinationString]: key };
