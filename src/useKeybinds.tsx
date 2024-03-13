@@ -1,10 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import useFocusedElement from "./helpers/useFocusedElement";
 import { KeybindsContext } from "./KeybindsProvider";
-import type { KeyboardEventKeycode } from "./types";
+import type {KeybindCallbacks, KeyboardEventKeycode} from "./types";
 import { createKeybindCombinationString } from "./utils";
-
-type KeybindCallbacks<Slug extends string> = Partial<Record<Slug, (event: KeyboardEvent) => any>>;
 
 const useKeybinds = <Slug extends string>(callbacks: KeybindCallbacks<Slug> = {}) => {
   const focusedElement = useFocusedElement();

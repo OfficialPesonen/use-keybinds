@@ -5,6 +5,8 @@ export interface Keybind {
   keybind: KeybindCombination;
 }
 
+export type KeybindCallbacks<Slug extends string> = Partial<Record<Slug, (event: KeyboardEvent) => any>>;
+
 export type Keybinds<Slug extends string> = Record<Slug, Keybind>;
 
 export type KeyboardEventKeycode =
