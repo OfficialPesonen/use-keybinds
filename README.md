@@ -7,7 +7,6 @@ A lightweight and typesafe library for managing keybinds in React applications.
 - Sequential keypresses such as (G then H)
 
 ## Usage
-
 ```tsx
 import {KeybindsProvider, useKeybinds} from "use-keybinds";
 
