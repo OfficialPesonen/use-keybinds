@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import useFocusedElement from "./helpers/useFocusedElement";
 import { KeybindsContext } from "./KeybindsProvider";
-import type {KeybindCallbacks, KeyboardEventKeycode} from "./types";
+import type { KeybindCallbacks, KeyboardEventKeycode } from "./types";
 import { createKeybindCombinationString } from "./utils";
 
 const useKeybinds = <Slug extends string>(callbacks: KeybindCallbacks<Slug> = {}) => {
@@ -41,7 +41,7 @@ const useKeybinds = <Slug extends string>(callbacks: KeybindCallbacks<Slug> = {}
       const combinationString = createKeybindCombinationString([...pressedKeyCodes], false);
       const sequentialCombinationString = createKeybindCombinationString(
         [...recentlyPressedKeyCodes],
-        true
+        true,
       );
       const keybindSlug = combinationsToKeybindKey[combinationString] as Slug;
       const sequentialKeybindSlug = combinationsToKeybindKey[sequentialCombinationString] as Slug;

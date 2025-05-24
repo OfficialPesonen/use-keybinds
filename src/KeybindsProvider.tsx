@@ -23,11 +23,16 @@ const KeybindsProvider = <Slug extends string>(props: KeybindsProviderProps<Slug
     return Object.entries(keybinds).reduce((result, entry) => {
       const key = entry[0] as string;
       const keybind: Keybind = entry[1] as Keybind;
-      const combinationString = createKeybindCombinationString(
-        keybind.keybind,
-        keybind.isSequential
-      );
-      return { ...result, [combinationString]: key };
+
+      const combinationStrings = keybind.keybind.reduce((result, combination) => {
+        const combinationString = createKeybindCombinationString(
+          combination,
+          keybind.isSequential,
+        );
+        return { ...result, [combinationString]: key };
+      }, {});
+
+      return { ...result, ...combinationStrings };
     }, {});
   }, [keybinds]);
 

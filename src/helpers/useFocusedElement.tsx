@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useFocusedElement = (): Element | null => {
   const [focusedElement, setFocusedElement] = useState<Element | null>(
-    typeof window !== "undefined" ? document.activeElement : null
+    typeof window !== "undefined" ? document.activeElement : null,
   );
 
   const handleFocusIn = useCallback(() => {

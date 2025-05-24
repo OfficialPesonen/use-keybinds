@@ -2,7 +2,7 @@ export interface Keybind {
   displayName?: string;
   description?: string;
   isSequential?: boolean;
-  keybind: KeybindCombination;
+  keybind: KeybindCombination[];
 }
 
 export type KeybindCallbacks<Slug extends string> = Partial<Record<Slug, (event: KeyboardEvent) => any>>;
