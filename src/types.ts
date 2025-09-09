@@ -91,6 +91,7 @@ export type KeyboardEventKeycode =
   | "NumpadSubtract"
   | "NumpadDecimal"
   | "NumpadDivide"
+  | "NumpadEnter"
   | "F1"
   | "F2"
   | "F3"
